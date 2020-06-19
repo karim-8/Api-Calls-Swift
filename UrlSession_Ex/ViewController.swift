@@ -6,40 +6,45 @@
 //  Copyright © 2020 Karem. All rights reserved.
 //
 
-/***
- last stop at --> 16:00 kilo logo
- */
+ 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
-    //instantiate url
+    
+    //MARK:- Outlets
+    @IBOutlet weak var dataTableView: UITableView!
+    
+    //MARK:- Variables
      let url = URL(string: "https://jsonplaceholder.typicode.com/users")
      let postUrl = URL(string: "https://jsonplaceholder.typicode.com/users")
-
+    
+     var userData: [User] = []
+ 
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     
-    //MARK:- Apic Buttons
+    //MARK:- Api call Buttons
     @IBAction func getApiCall(_ sender: Any) {
         
         
         //call it by url session
         let session = URLSession.shared
         session.dataTask(with: url!) { (data, response, err) in
-            if let response = response{
-                print("*******\(response)")
-            }
-            ///
+           
             if let data = data{
                 do{
-                    
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-                    print("*********\(json)")
+                    let parsedData = try JSONDecoder().decode([User].self, from: data)
+                    self.userData = parsedData
 
+                    //UIKit isn't thread safe so we have to update ui in the main thread as the clousres takes another threads to work ion
+                    DispatchQueue.main.async {
+                        self.dataTableView.reloadData()
+                    }
+                    print(parsedData)
                 }catch {
                     print(error)
                 }
@@ -47,7 +52,7 @@ class ViewController: UIViewController {
             }
         }.resume()
         
-        
+
     }
     
     
@@ -77,5 +82,22 @@ class ViewController: UIViewController {
         }.resume()
         
     }
+}
+
+//MARK:- TableView DataSource & Delegates
+extension ViewController {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        userData.count
+       }
+       
+       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = userData[indexPath.row].email
+        return cell
+    
+    
+    }
+    
 }
 
