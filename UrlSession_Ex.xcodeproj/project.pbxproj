@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C5A8C22249CC9AD0044E2CE /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5A8C21249CC9AD0044E2CE /* DataModel.swift */; };
 		8C87B687249ADC0F00BD41CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C87B686249ADC0F00BD41CE /* AppDelegate.swift */; };
 		8C87B689249ADC0F00BD41CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C87B688249ADC0F00BD41CE /* SceneDelegate.swift */; };
 		8C87B68B249ADC0F00BD41CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C87B68A249ADC0F00BD41CE /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C5A8C21249CC9AD0044E2CE /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		8C87B683249ADC0F00BD41CE /* UrlSession_Ex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrlSession_Ex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C87B686249ADC0F00BD41CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C87B688249ADC0F00BD41CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C5A8C1F249CC98C0044E2CE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C5A8C21249CC9AD0044E2CE /* DataModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		8C87B67A249ADC0F00BD41CE = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +66,7 @@
 		8C87B685249ADC0F00BD41CE /* UrlSession_Ex */ = {
 			isa = PBXGroup;
 			children = (
+				8C5A8C1F249CC98C0044E2CE /* Models */,
 				8C87B686249ADC0F00BD41CE /* AppDelegate.swift */,
 				8C87B688249ADC0F00BD41CE /* SceneDelegate.swift */,
 				8C87B68A249ADC0F00BD41CE /* ViewController.swift */,
@@ -141,6 +152,7 @@
 				8C87B68B249ADC0F00BD41CE /* ViewController.swift in Sources */,
 				8C87B687249ADC0F00BD41CE /* AppDelegate.swift in Sources */,
 				8C87B689249ADC0F00BD41CE /* SceneDelegate.swift in Sources */,
+				8C5A8C22249CC9AD0044E2CE /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
