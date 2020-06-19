@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     
     //instantiate url
      let url = URL(string: "https://jsonplaceholder.typicode.com/users")
+     let postUrl = URL(string: "https://jsonplaceholder.typicode.com/users")
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,21 +53,22 @@ class ViewController: UIViewController {
     
     ///MARK:- Post Api
     @IBAction func postApiCall(_ sender: Any) {
-        var request = URLRequest(url: url!)
+        
+        var request = URLRequest(url: postUrl!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "post"
 
-        let paramters = ["name":"karim","age":"125"]
-        
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: paramters, options: []) else {return}
-        request.httpBody = httpBody
+     
+        let newPost = DataModel(name: "Karim", city: "Cairo", age: 100)
+        let encodedBody = try! JSONEncoder().encode(newPost)
+        request.httpBody = encodedBody
         
         let session = URLSession.shared
         session.dataTask(with: request) { (data, response, err) in
 
             if let data = data {
                 do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    let json = try JSONDecoder().decode(DataModel.self, from: data)
                     print("***\(json)")
                 }catch {
                     print(error)
